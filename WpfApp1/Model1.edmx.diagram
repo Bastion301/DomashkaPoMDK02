@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d1b0de3c4ade44bcbf3b15bfa5110908" Name="Diagram1">
+        <EntityTypeShape EntityType="PartnerOrdersModel.Materials" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PartnerOrdersModel.MaterialTypes" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PartnerOrdersModel.PartnerRequests" Width="1.5" PointX="6" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PartnerOrdersModel.Partners" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PartnerOrdersModel.ProductMaterials" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="PartnerOrdersModel.Products" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PartnerOrdersModel.ProductStock" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="PartnerOrdersModel.ProductTypes" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PartnerOrdersModel.RequestItems" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PartnerOrdersModel.Suppliers" Width="1.5" PointX="0.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PartnerOrdersModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="9.5" IsExpanded="true" />
+        <AssociationConnector Association="PartnerOrdersModel.FK__Materials__Mater__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="PartnerOrdersModel.FK__Materials__Suppl__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="PartnerOrdersModel.FK__ProductMa__Mater__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="PartnerOrdersModel.FK__PartnerRe__Partn__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="PartnerOrdersModel.FK__RequestIt__Reque__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="PartnerOrdersModel.FK__ProductMa__Produ__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="PartnerOrdersModel.FK__Products__Produc__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="PartnerOrdersModel.FK__ProductSt__Produ__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="PartnerOrdersModel.FK__RequestIt__Produ__5CD6CB2B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

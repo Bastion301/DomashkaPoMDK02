@@ -1,0 +1,222 @@
+﻿<Window x:Class="WpfApp1.EditRequestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Редактирование заявки" Height="700" Width="900"
+        WindowStartupLocation="CenterOwner"
+        Background="#FFFFFFFF"
+        ResizeMode="NoResize" Icon="/Новые технологии.png">
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Background="#BBDCFA" >
+            <TextBlock x:Name="WindowTitle" Text="Редактирование заявки" 
+                       FontFamily="Bahnschrift Light SemiCondensed" 
+                       FontSize="20" FontWeight="Bold" 
+                       Foreground="#0C4882" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <!-- Основные поля -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="0,15,0,0">
+            <StackPanel>
+                <!-- Партнер (выбор из существующих) -->
+                <TextBlock Text="Партнер:" 
+                           FontFamily="Bahnschrift Light SemiCondensed" 
+                           FontSize="14" Foreground="#0C4882" FontWeight="SemiBold"/>
+                <ComboBox x:Name="PartnerComboBox" 
+                          FontFamily="Bahnschrift Light SemiCondensed" 
+                          FontSize="13" Margin="0,5,0,15" 
+                          Background="#FFFFFF" BorderBrush="#0C4882" 
+                          Foreground="#0C4882" Padding="8,5"
+                          DisplayMemberPath="PartnerName"
+                          SelectionChanged="PartnerComboBox_SelectionChanged"/>
+
+                <!-- Тип партнера -->
+                <TextBlock Text="Тип партнера:" 
+                           FontFamily="Bahnschrift Light SemiCondensed" 
+                           FontSize="14" Foreground="#0C4882" FontWeight="SemiBold"/>
+                <ComboBox x:Name="PartnerTypeComboBox" 
+                          FontFamily="Bahnschrift Light SemiCondensed" 
+                          FontSize="13" Margin="0,5,0,15" 
+                          Background="#FFFFFF" BorderBrush="#0C4882" 
+                          Foreground="#0C4882" Padding="8,5"/>
+
+                <!-- ФИО директора -->
+                <TextBlock Text="ФИО директора:" 
+                           FontFamily="Bahnschrift Light SemiCondensed" 
+                           FontSize="14" Foreground="#0C4882" FontWeight="SemiBold"/>
+                <TextBox x:Name="DirectorNameTextBox" 
+                         FontFamily="Bahnschrift Light SemiCondensed" 
+                         FontSize="13" Margin="0,5,0,15" 
+                         Background="#FFFFFF" BorderBrush="#0C4882" 
+                         Foreground="#0C4882" Padding="8,5"
+                         IsReadOnly="True"/>
+
+                <!-- Адрес -->
+                <TextBlock Text="Юридический адрес:" 
+                           FontFamily="Bahnschrift Light SemiCondensed" 
+                           FontSize="14" Foreground="#0C4882" FontWeight="SemiBold"/>
+                <TextBox x:Name="AddressTextBox" 
+                         FontFamily="Bahnschrift Light SemiCondensed" 
+                         FontSize="13" Margin="0,5,0,15" 
+                         Background="#FFFFFF" BorderBrush="#0C4882" 
+                         Foreground="#0C4882" Padding="8,5" 
+                         AcceptsReturn="True" Height="60" 
+                         VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"
+                         IsReadOnly="True"/>
+
+                <!-- Рейтинг -->
+                <TextBlock Text="Рейтинг:" 
+                           FontFamily="Bahnschrift Light SemiCondensed" 
+                           FontSize="14" Foreground="#0C4882" FontWeight="SemiBold"/>
+                <TextBox x:Name="RatingTextBox" 
+                         FontFamily="Bahnschrift Light SemiCondensed" 
+                         FontSize="13" Margin="0,5,0,15" 
+                         Background="#FFFFFF" BorderBrush="#0C4882" 
+                         Foreground="#0C4882" Padding="8,5"
+                         IsReadOnly="True"/>
+
+                <!-- Телефон -->
+                <TextBlock Text="Телефон:" 
+                           FontFamily="Bahnschrift Light SemiCondensed" 
+                           FontSize="14" Foreground="#0C4882" FontWeight="SemiBold"/>
+                <TextBox x:Name="PhoneTextBox" 
+                         FontFamily="Bahnschrift Light SemiCondensed" 
+                         FontSize="13" Margin="0,5,0,15" 
+                         Background="#FFFFFF" BorderBrush="#0C4882" 
+                         Foreground="#0C4882" Padding="8,5"
+                         IsReadOnly="True"/>
+
+                <!-- Email -->
+                <TextBlock Text="Email:" 
+                           FontFamily="Bahnschrift Light SemiCondensed" 
+                           FontSize="14" Foreground="#0C4882" FontWeight="SemiBold"/>
+                <TextBox x:Name="EmailTextBox" 
+                         FontFamily="Bahnschrift Light SemiCondensed" 
+                         FontSize="13" Margin="0,5,0,15" 
+                         Background="#FFFFFF" BorderBrush="#0C4882" 
+                         Foreground="#0C4882" Padding="8,5"
+                         IsReadOnly="True"/>
+
+                <!-- Статус заявки -->
+                <TextBlock Text="Статус заявки:" 
+                           FontFamily="Bahnschrift Light SemiCondensed" 
+                           FontSize="14" Foreground="#0C4882" FontWeight="SemiBold"/>
+                <ComboBox x:Name="StatusComboBox" 
+                          FontFamily="Bahnschrift Light SemiCondensed" 
+                          FontSize="13" Margin="0,5,0,15" 
+                          Background="#FFFFFF" BorderBrush="#0C4882" 
+                          Foreground="#0C4882" Padding="8,5"/>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Остальная часть формы без изменений -->
+        <!-- Таблица продукции -->
+        <Border Grid.Row="2" BorderBrush="#0C4882" BorderThickness="1" Margin="0,15,0,15" 
+                Background="#FFFFFF" CornerRadius="5">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Background="#BBDCFA" >
+                    <TextBlock Text="Продукция в заявке" 
+                               FontFamily="Bahnschrift Light SemiCondensed" 
+                               FontSize="16" FontWeight="Bold" 
+                               Foreground="#0C4882"/>
+                    <Button x:Name="AddProductButton" Content="+ Добавить продукцию" 
+                            Background="#0C4882" Foreground="#FFFFFF" 
+                            FontFamily="Bahnschrift Light SemiCondensed"
+                            Padding="10,5" BorderThickness="0" FontSize="12" 
+                            FontWeight="SemiBold" Margin="20,0,0,0"
+                            Click="AddProductButton_Click" Cursor="Hand"/>
+                </StackPanel>
+
+                <DataGrid x:Name="ProductsDataGrid" 
+                          AutoGenerateColumns="False" 
+                          Background="#FFFFFF" 
+                          BorderThickness="0" 
+                          HeadersVisibility="Column" 
+                          IsReadOnly="False"
+                          FontFamily="Bahnschrift Light SemiCondensed" 
+                          FontSize="12"
+                          MaxHeight="200"
+                          Margin="10"
+                          CellEditEnding="ProductsDataGrid_CellEditEnding">
+                    <DataGrid.Columns>
+                        <DataGridComboBoxColumn x:Name="ProductComboBoxColumn" 
+                                              Header="Продукция" 
+                                              Width="*"
+                                              SelectedValueBinding="{Binding ProductID, UpdateSourceTrigger=PropertyChanged}"
+                                              DisplayMemberPath="ProductName"
+                                              SelectedValuePath="ProductID"/>
+                        <DataGridTextColumn Header="Количество" 
+                                           Binding="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}" 
+                                           Width="100"/>
+                        <DataGridTextColumn Header="Цена за ед." 
+                                           Binding="{Binding UnitPrice, StringFormat={}₽ {0:N2}}" 
+                                           Width="120" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Сумма" 
+                                           Binding="{Binding TotalPrice, StringFormat={}₽ {0:N2}}" 
+                                           Width="120" IsReadOnly="True"/>
+                        <DataGridTemplateColumn Header="Действия" Width="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Удалить" 
+                                            Background="#BBDCFA" Foreground="#0C4882" 
+                                            FontFamily="Bahnschrift Light SemiCondensed"
+                                            FontSize="11" Padding="5,2" 
+                                            BorderThickness="1" BorderBrush="#0C4882"
+                                            Click="DeleteProductButton_Click" 
+                                            Cursor="Hand"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <!-- Итоговая сумма -->
+                <Border Background="#BBDCFA" Padding="10,5" Margin="10,5,10,10">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TextBlock Text="Итоговая сумма: " 
+                                   FontFamily="Bahnschrift Light SemiCondensed" 
+                                   FontSize="14" FontWeight="Bold" 
+                                   Foreground="#0C4882"/>
+                        <TextBlock x:Name="TotalAmountText" Text="₽ 0.00" 
+                                   FontFamily="Bahnschrift Light SemiCondensed" 
+                                   FontSize="14" FontWeight="Bold" 
+                                   Foreground="#0C4882"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
+
+        <!-- Кнопки -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="SuggestedProductsButton" Content="Предлагаемая продукция" 
+            Background="#BBDCFA" Foreground="#0C4882" 
+            FontFamily="Bahnschrift Light SemiCondensed"
+            Padding="15,8" BorderThickness="1" BorderBrush="#0C4882" 
+            FontSize="12" FontWeight="SemiBold" Margin="0,0,10,0"
+            Click="SuggestedProductsButton_Click" Cursor="Hand"/>
+            
+            <Button x:Name="SaveButton" Content="Сохранить" 
+                    Background="#0C4882" Foreground="#FFFFFF" 
+                    FontFamily="Bahnschrift Light SemiCondensed"
+                    Padding="20,8" BorderThickness="0" FontSize="14" 
+                    FontWeight="SemiBold" Margin="0,0,10,0"
+                    Click="SaveButton_Click" Cursor="Hand"/>
+            <Button x:Name="CancelButton" Content="Отмена" 
+                    Background="#BBDCFA" Foreground="#0C4882" 
+                    FontFamily="Bahnschrift Light SemiCondensed"
+                    Padding="20,8" BorderThickness="1" BorderBrush="#0C4882" 
+                    FontSize="14" FontWeight="SemiBold"
+                    Click="CancelButton_Click" Cursor="Hand"/>
+        </StackPanel>
+    </Grid>
+</Window>

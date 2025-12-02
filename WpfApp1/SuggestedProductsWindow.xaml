@@ -1,0 +1,176 @@
+﻿<Window x:Class="WpfApp1.SuggestedProductsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Предлагаемая продукция" Height="600" Width="900"
+        WindowStartupLocation="CenterOwner"
+        Background="#FFFFFFFF"
+        ResizeMode="NoResize" Icon="/Новые технологии.png">
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Background="#BBDCFA" >
+            <TextBlock x:Name="WindowTitle" Text="Предлагаемая продукция" 
+                       FontFamily="Bahnschrift Light SemiCondensed" 
+                       FontSize="20" FontWeight="Bold" 
+                       Foreground="#0C4882" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <!-- Основной контент -->
+        <Grid Grid.Row="1" Margin="0,15,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Таблица продукции -->
+            <Border Grid.Column="0" BorderBrush="#0C4882" BorderThickness="1" Margin="0,0,10,0" 
+                    Background="#FFFFFF" CornerRadius="5">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Background="#BBDCFA" >
+                        <TextBlock Text="Доступная продукция" 
+                                   FontFamily="Bahnschrift Light SemiCondensed" 
+                                   FontSize="16" FontWeight="Bold" 
+                                   Foreground="#0C4882"/>
+                    </StackPanel>
+
+                    <DataGrid x:Name="ProductsDataGrid" 
+                              AutoGenerateColumns="False" 
+                              Background="#FFFFFF" 
+                              BorderThickness="0" 
+                              HeadersVisibility="Column" 
+                              IsReadOnly="True"
+                              FontFamily="Bahnschrift Light SemiCondensed" 
+                              FontSize="12"
+                              Margin="10"
+                              SelectionChanged="ProductsDataGrid_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Наименование" 
+                                               Binding="{Binding ProductName}" 
+                                               Width="*"/>
+                            <DataGridTextColumn Header="Тип" 
+                                               Binding="{Binding ProductTypeName}" 
+                                               Width="120"/>
+                            <DataGridTextColumn Header="Артикул" 
+                                               Binding="{Binding ArticleNumber}" 
+                                               Width="100"/>
+                            <DataGridTextColumn Header="На складе" 
+                                               Binding="{Binding StockQuantity}" 
+                                               Width="80"/>
+                            <DataGridTextColumn Header="Стоимость" 
+                                               Binding="{Binding MinPartnerPrice, StringFormat={}₽ {0:N2}}" 
+                                               Width="100"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </Border>
+
+            <!-- Панель расчета материалов -->
+            <Border Grid.Column="1" BorderBrush="#0C4882" BorderThickness="1" 
+                    Background="#FFFFFF" CornerRadius="5">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Background="#BBDCFA" >
+                        <TextBlock Text="Расчет материалов" 
+                                   FontFamily="Bahnschrift Light SemiCondensed" 
+                                   FontSize="16" FontWeight="Bold" 
+                                   Foreground="#0C4882"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="10">
+                        <TextBlock Text="Выберите продукцию для расчета материалов" 
+                                   FontFamily="Bahnschrift Light SemiCondensed" 
+                                   FontSize="12" Foreground="#0C4882" 
+                                   TextWrapping="Wrap" Margin="0,0,0,10"/>
+
+                        <!-- Параметры для расчета -->
+                        <TextBlock Text="Количество продукции:" 
+                                   FontFamily="Bahnschrift Light SemiCondensed" 
+                                   FontSize="12" Foreground="#0C4882" 
+                                   FontWeight="SemiBold" Margin="0,5,0,0"/>
+                        <TextBox x:Name="QuantityTextBox" 
+                                 Text="100" 
+                                 FontFamily="Bahnschrift Light SemiCondensed" 
+                                 FontSize="12" Margin="0,5,0,10" 
+                                 Background="#FFFFFF" BorderBrush="#0C4882" 
+                                 Foreground="#0C4882" Padding="5"/>
+
+                        <TextBlock Text="Параметр 1 (длина):" 
+                                   FontFamily="Bahnschrift Light SemiCondensed" 
+                                   FontSize="12" Foreground="#0C4882" 
+                                   FontWeight="SemiBold" Margin="0,5,0,0"/>
+                        <TextBox x:Name="Param1TextBox" 
+                                 Text="1.5" 
+                                 FontFamily="Bahnschrift Light SemiCondensed" 
+                                 FontSize="12" Margin="0,5,0,10" 
+                                 Background="#FFFFFF" BorderBrush="#0C4882" 
+                                 Foreground="#0C4882" Padding="5"/>
+
+                        <TextBlock Text="Параметр 2 (ширина):" 
+                                   FontFamily="Bahnschrift Light SemiCondensed" 
+                                   FontSize="12" Foreground="#0C4882" 
+                                   FontWeight="SemiBold" Margin="0,5,0,0"/>
+                        <TextBox x:Name="Param2TextBox" 
+                                 Text="0.8" 
+                                 FontFamily="Bahnschrift Light SemiCondensed" 
+                                 FontSize="12" Margin="0,5,0,15" 
+                                 Background="#FFFFFF" BorderBrush="#0C4882" 
+                                 Foreground="#0C4882" Padding="5"/>
+
+                        <Button x:Name="CalculateButton" Content="Рассчитать материалы" 
+                                Background="#0C4882" Foreground="#FFFFFF" 
+                                FontFamily="Bahnschrift Light SemiCondensed"
+                                Padding="10,5" BorderThickness="0" FontSize="12" 
+                                FontWeight="SemiBold" 
+                                Click="CalculateButton_Click" Cursor="Hand"/>
+
+                        <!-- Результаты расчета -->
+                        <Border BorderBrush="#0C4882" BorderThickness="1" 
+                                Background="#BBDCFA" CornerRadius="3" 
+                                Margin="0,15,0,0" Padding="10">
+                            <StackPanel>
+                                <TextBlock Text="Результаты расчета:" 
+                                           FontFamily="Bahnschrift Light SemiCondensed" 
+                                           FontSize="13" FontWeight="Bold" 
+                                           Foreground="#0C4882" Margin="0,0,0,5"/>
+
+                                <ItemsControl x:Name="MaterialsResultsItemsControl" 
+                                              FontFamily="Bahnschrift Light SemiCondensed" 
+                                              FontSize="11" Foreground="#0C4882">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding}" Margin="0,2,0,0"/>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- Кнопки -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,0,0">
+            <Button x:Name="AddToRequestButton" Content="Добавить в заявку" 
+                    Background="#0C4882" Foreground="#FFFFFF" 
+                    FontFamily="Bahnschrift Light SemiCondensed"
+                    Padding="15,8" BorderThickness="0" FontSize="12" 
+                    FontWeight="SemiBold" Margin="0,0,10,0"
+                    Click="AddToRequestButton_Click" Cursor="Hand"/>
+            <Button x:Name="CloseButton" Content="Закрыть" 
+                    Background="#BBDCFA" Foreground="#0C4882" 
+                    FontFamily="Bahnschrift Light SemiCondensed"
+                    Padding="20,8" BorderThickness="1" BorderBrush="#0C4882" 
+                    FontSize="14" FontWeight="SemiBold"
+                    Click="CloseButton_Click" Cursor="Hand"/>
+        </StackPanel>
+    </Grid>
+</Window>
